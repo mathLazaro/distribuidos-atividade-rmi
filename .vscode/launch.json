@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Client: MainClient",
+            "request": "launch",
+            "mainClass": "distribuidos.rmi.MainClient",
+            "cwd": "${workspaceFolder}/client",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Server: MainServer",
+            "request": "launch",
+            "mainClass": "distribuidos.rmi.MainServer",
+            "cwd": "${workspaceFolder}/server",
+            "console": "integratedTerminal"
+        }
+    ]
+}
