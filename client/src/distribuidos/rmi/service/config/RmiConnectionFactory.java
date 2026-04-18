@@ -6,9 +6,9 @@ import java.util.Optional;
 
 public class RmiConnectionFactory {
 
-    public static Optional<Registry> connect(String host, int port) {
+    public static Optional<Registry> connect(String rmiHost, int rmiPort) {
         try {
-            Registry registry = LocateRegistry.getRegistry(host, port);
+            Registry registry = LocateRegistry.getRegistry(rmiHost, rmiPort);
 
             return Optional.of(registry);
         } catch (Exception e) {

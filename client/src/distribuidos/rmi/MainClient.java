@@ -12,14 +12,13 @@ public class MainClient {
     public static void main(String[] args) {
         EnvLoader.load(".env");
 
-        String host = EnvLoader.get("HOST").orElse("localhost");
-        int port = EnvLoader.get("PORT").map(Integer::parseInt)
-                .orElseThrow(() -> new RuntimeException("PORT deve ser definido no .env como um número inteiro"));
+        String rmiHost = EnvLoader.get("RMI_HOST").orElse("localhost");
+        int rmiPort = EnvLoader.get("RMI_PORT").map(Integer::parseInt).orElse(1099);
 
         System.out.println("Client iniciado");
 
         // Conecta ao servidor RMI
-        Registry registry = RmiConnectionFactory.connect(host, port)
+        Registry registry = RmiConnectionFactory.connect(rmiHost, rmiPort)
                 .orElseThrow(() -> new RuntimeException("Não foi possível conectar ao servidor RMI"));
 
         TerminalView view = TerminalView.getInstance();
