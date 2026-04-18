@@ -1,7 +1,7 @@
 # ====== CONFIG ======
 SRC_DIR := src
 TARGET_DIR := target
-MAIN := distribuidos.rmi.MainServer
+MAIN := distribuidos.rmi.server.MainServer
 SHARED_JAR := ../shared/target/shared.jar
 
 JAVAC := javac
