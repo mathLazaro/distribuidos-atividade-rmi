@@ -1,4 +1,4 @@
-package helper.loader;
+package distribuidos.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
