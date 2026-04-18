@@ -2,5 +2,9 @@
   "java.project.sourcePaths": [
     "client/src",
     "server/src"
+  ],
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "shared/target/shared.jar"
   ]
 }

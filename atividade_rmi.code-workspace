@@ -7,6 +7,10 @@
     {
       "name": "server",
       "path": "server"
+    },
+    {
+      "name": "shared",
+      "path": "shared"
     }
   ]
 }

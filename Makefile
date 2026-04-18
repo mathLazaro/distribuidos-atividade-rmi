@@ -1,8 +1,11 @@
-.PHONY: all client server build run clean rebuild
+.PHONY: all shared client server build run clean rebuild
 
 all: build
 
-build: client server
+build: shared client server
+
+shared:
+	$(MAKE) -C shared build
 
 client:
 	$(MAKE) -C client build
@@ -17,9 +20,11 @@ run-server:
 	$(MAKE) -C server run
 
 clean:
+	$(MAKE) -C shared clean
 	$(MAKE) -C client clean
 	$(MAKE) -C server clean
 
 rebuild:
+	$(MAKE) -C shared rebuild
 	$(MAKE) -C client rebuild
 	$(MAKE) -C server rebuild

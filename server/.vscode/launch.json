@@ -6,6 +6,10 @@
       "name": "Server: MainServer",
       "request": "launch",
       "mainClass": "distribuidos.rmi.MainServer",
+      "classPaths": [
+        "${workspaceFolder}/target",
+        "${workspaceFolder}/../shared/target/shared.jar"
+      ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal"
     }
