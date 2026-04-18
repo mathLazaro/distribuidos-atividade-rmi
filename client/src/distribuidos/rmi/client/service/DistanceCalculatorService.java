@@ -1,9 +1,9 @@
-package distribuidos.rmi.service;
+package distribuidos.rmi.client.service;
 
 import java.rmi.registry.Registry;
 
-import distribuidos.rmi.model.FlowerFeature;
-import distribuidos.rmi.model.constant.DistanceMethod;
+import distribuidos.rmi.client.model.FlowerFeature;
+import distribuidos.rmi.client.model.constant.DistanceMethod;
 
 public interface DistanceCalculatorService {
 

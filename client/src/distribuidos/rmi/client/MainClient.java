@@ -1,10 +1,10 @@
-package distribuidos.rmi;
+package distribuidos.rmi.client;
 
 import java.rmi.registry.Registry;
 
-import distribuidos.rmi.controller.FlowerController;
-import distribuidos.rmi.service.config.RmiConnectionFactory;
-import distribuidos.rmi.view.TerminalView;
+import distribuidos.rmi.client.controller.FlowerController;
+import distribuidos.rmi.client.service.config.RmiConnectionFactory;
+import distribuidos.rmi.client.view.TerminalView;
 import helper.loader.EnvLoader;
 
 public class MainClient {

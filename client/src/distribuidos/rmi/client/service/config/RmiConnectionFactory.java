@@ -1,4 +1,4 @@
-package distribuidos.rmi.service.config;
+package distribuidos.rmi.client.service.config;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;

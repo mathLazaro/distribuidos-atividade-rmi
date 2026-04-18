@@ -1,4 +1,4 @@
-package distribuidos.rmi.model;
+package distribuidos.rmi.client.model;
 
 public record Dimension(double height, double width) {
 

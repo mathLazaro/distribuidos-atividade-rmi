@@ -1,13 +1,13 @@
-package distribuidos.rmi.controller;
+package distribuidos.rmi.client.controller;
 
 import java.rmi.registry.Registry;
 import java.util.Map;
 
-import distribuidos.rmi.model.FlowerFeature;
-import distribuidos.rmi.model.Pair;
-import distribuidos.rmi.model.constant.DistanceMethod;
-import distribuidos.rmi.service.DistanceCalculatorService;
-import distribuidos.rmi.view.TerminalView;
+import distribuidos.rmi.client.model.FlowerFeature;
+import distribuidos.rmi.client.model.Pair;
+import distribuidos.rmi.client.model.constant.DistanceMethod;
+import distribuidos.rmi.client.service.DistanceCalculatorService;
+import distribuidos.rmi.client.view.TerminalView;
 
 public class FlowerController {
 
