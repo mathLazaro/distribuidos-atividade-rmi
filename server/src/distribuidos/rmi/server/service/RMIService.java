@@ -1,5 +1,6 @@
 package distribuidos.rmi.server.service;
 
+import java.rmi.NoSuchObjectException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -14,11 +15,29 @@ public class RMIService {
 
     private final Registry registry;
 
+    private static RMIService instance;
+
+    public static RMIService getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("RMIService não foi inicializado. Chame initalizeRMIServer primeiro.");
+        }
+        return instance;
+    }
+
     private RMIService(Registry registry) {
         if (registry == null) {
             throw new IllegalArgumentException("O RMI Registry não pode ser nulo.");
         }
         this.registry = registry;
+        instance = this;
+    }
+
+    public void unbindRegistry() {
+        try {
+            UnicastRemoteObject.unexportObject(this.registry, true);
+            System.out.println("Registro removido.");
+        } catch (NoSuchObjectException ignored) {
+        }
     }
 
     /**

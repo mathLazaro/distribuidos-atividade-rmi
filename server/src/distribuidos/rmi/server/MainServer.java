@@ -3,6 +3,7 @@ package distribuidos.rmi.server;
 import distribuidos.rmi.server.service.RMIService;
 import distribuidos.rmi.server.view.TerminalView;
 import distribuidos.util.EnvLoader;
+
 import distribuidos.rmi.server.service.DistanceCalculatorServiceImpl;
 
 public class MainServer {
@@ -26,6 +27,25 @@ public class MainServer {
             e.printStackTrace();
         }
 
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            shutdownServer();
+        }));
+
+    }
+
+    /**
+     * Encerra o servidor RMI e remove o registro para evitar vazamento de recursos.
+     */
+    private static void shutdownServer() {
+        try {
+            System.out.printf("%n%nEncerrando servidor RMI...%n");
+
+            RMIService.getInstance().unbindRegistry();
+
+            System.out.println("Servidor encerrado com sucesso.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
