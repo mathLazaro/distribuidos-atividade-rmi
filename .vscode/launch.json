@@ -3,9 +3,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MainServer",
+            "request": "launch",
+            "mainClass": "distribuidos.rmi.server.MainServer",
+            "projectName": "atividade_rmi_ba211b49"
+        },
+        {
+            "type": "java",
             "name": "Client: MainClient",
             "request": "launch",
-            "mainClass": "distribuidos.rmi.MainClient",
+            "mainClass": "distribuidos.rmi.client.MainClient",
             "cwd": "${workspaceFolder}/client",
             "console": "integratedTerminal"
         },
@@ -13,7 +20,7 @@
             "type": "java",
             "name": "Server: MainServer",
             "request": "launch",
-            "mainClass": "distribuidos.rmi.MainServer",
+            "mainClass": "distribuidos.rmi.server.MainServer",
             "cwd": "${workspaceFolder}/server",
             "console": "integratedTerminal"
         }

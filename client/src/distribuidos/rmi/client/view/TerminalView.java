@@ -3,10 +3,10 @@ package distribuidos.rmi.client.view;
 import java.util.Map;
 import java.util.Scanner;
 
-import distribuidos.rmi.client.model.Dimension;
-import distribuidos.rmi.client.model.FlowerFeature;
+import distribuidos.api.model.Dimension;
+import distribuidos.api.model.FlowerFeature;
+import distribuidos.rmi.client.model.DistanceMethod;
 import distribuidos.rmi.client.model.Pair;
-import distribuidos.rmi.client.model.constant.DistanceMethod;
 
 public class TerminalView {
 

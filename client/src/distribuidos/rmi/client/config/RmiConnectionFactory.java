@@ -1,4 +1,4 @@
-package distribuidos.rmi.client.service.config;
+package distribuidos.rmi.client.config;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -8,6 +8,7 @@ public class RmiConnectionFactory {
 
     public static Optional<Registry> connect(String rmiHost, int rmiPort) {
         try {
+            System.out.println("Conectando ao servidor RMI em " + rmiHost + ":" + rmiPort);
             Registry registry = LocateRegistry.getRegistry(rmiHost, rmiPort);
 
             return Optional.of(registry);

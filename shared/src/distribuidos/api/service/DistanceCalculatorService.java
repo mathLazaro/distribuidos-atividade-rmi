@@ -6,7 +6,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 
 import distribuidos.api.model.FlowerFeature;
-import distribuidos.api.model.DistanceMethod;
 
 /**
  * Interface remota para o serviço de cálculo de distância entre características

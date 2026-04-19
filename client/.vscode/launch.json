@@ -5,7 +5,7 @@
       "type": "java",
       "name": "Client: MainClient",
       "request": "launch",
-      "mainClass": "distribuidos.rmi.MainClient",
+      "mainClass": "distribuidos.rmi.client.MainClient",
       "classPaths": [
         "${workspaceFolder}/target",
         "${workspaceFolder}/../shared/target/shared.jar"
