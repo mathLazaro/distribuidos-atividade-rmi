@@ -7,18 +7,17 @@ import distribuidos.rmi.server.service.DistanceCalculatorServiceImpl;
 
 public class MainServer {
 
+    private static String HOST;
+    private static int PORT;
+
     public static void main(String[] args) {
-
-        EnvLoader.loadRelativeTo(MainServer.class, ".env");
-
-        String host = EnvLoader.get("HOST").orElse("127.0.0.1");
-        int port = EnvLoader.get("PORT").map(Integer::parseInt).orElse(1099);
+        loadEnvContext();
 
         System.out.printf("%nServer iniciado%n");
 
         RMIService rmiService;
         try {
-            rmiService = RMIService.initalizeRMIServer(host, port);
+            rmiService = RMIService.initalizeRMIServer(HOST, PORT);
             rmiService.registryStub(
                     new DistanceCalculatorServiceImpl(TerminalView.getInstance()),
                     "DistanceCalculatorService");
@@ -27,6 +26,17 @@ public class MainServer {
             e.printStackTrace();
         }
 
+    }
+
+    /**
+     * Carrega as variáveis de ambiente necessárias para o cliente, buscando o
+     * arquivo .env na raiz do projeto server
+     */
+    private static void loadEnvContext() {
+        EnvLoader.loadRelativeTo(MainServer.class, ".env");
+
+        HOST = EnvLoader.get("HOST").orElse("127.0.0.1");
+        PORT = EnvLoader.get("PORT").map(Integer::parseInt).orElse(1099);
     }
 
 }

@@ -6,6 +6,15 @@ import java.util.Optional;
 
 public class RmiConnectionFactory {
 
+    /**
+     * Tenta estabelecer uma conexão com o servidor RMI usando o host e a porta
+     * fornecidos.
+     * 
+     * @param rmiHost O endereço IP ou hostname do servidor RMI.
+     * @param rmiPort A porta na qual o servidor RMI está escutando.
+     * @return Um Optional contendo o Registry se a conexão for bem-sucedida, ou um
+     *         Optional vazio se ocorrer um erro.
+     */
     public static Optional<Registry> connect(String rmiHost, int rmiPort) {
         try {
             System.out.println("Conectando ao servidor RMI em " + rmiHost + ":" + rmiPort);

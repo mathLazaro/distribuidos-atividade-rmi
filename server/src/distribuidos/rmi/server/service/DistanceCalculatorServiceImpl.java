@@ -4,6 +4,9 @@ import distribuidos.rmi.server.view.TerminalView;
 import distribuidos.api.model.FlowerFeature;
 import distribuidos.api.service.DistanceCalculatorService;
 
+/**
+ * Implementação do serviço de cálculo de proximidade entre flores.
+ */
 public class DistanceCalculatorServiceImpl implements DistanceCalculatorService {
 
     private final TerminalView view;
@@ -12,6 +15,14 @@ public class DistanceCalculatorServiceImpl implements DistanceCalculatorService 
         this.view = terminalView;
     }
 
+    /**
+     * Calcula a distância entre duas flores usando a métrica de distância
+     * euclidiana.
+     *
+     * @param features1 As características da primeira flor.
+     * @param features2 As características da segunda flor.
+     * @return A distância euclidiana entre as duas flores.
+     */
     @Override
     public double calculateDistanceByEclidean(FlowerFeature features1, FlowerFeature features2) {
         view.logMethodInvocation("Distance by Euclidean", features1, features2);
@@ -30,6 +41,14 @@ public class DistanceCalculatorServiceImpl implements DistanceCalculatorService 
         return distance;
     }
 
+    /**
+     * Calcula a distância entre duas flores usando a métrica de distância por
+     * blocos (City Block).
+     *
+     * @param features1 As características da primeira flor.
+     * @param features2 As características da segunda flor.
+     * @return A distância por blocos entre as duas flores.
+     */
     @Override
     public double calculateDistanceByCityBlock(FlowerFeature features1, FlowerFeature features2) {
         view.logMethodInvocation("Distance by City Block", features1, features2);

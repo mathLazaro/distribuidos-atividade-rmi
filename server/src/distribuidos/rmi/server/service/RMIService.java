@@ -6,6 +6,10 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+/**
+ * Service responsável por lidar com a inicialização do servidor RMI e o
+ * registro de stubs de serviços remotos.
+ */
 public class RMIService {
 
     private final Registry registry;
@@ -17,6 +21,17 @@ public class RMIService {
         this.registry = registry;
     }
 
+    /**
+     * Inicializa o servidor RMI criando um registry na porta especificada e
+     * configurando o hostname.
+     * 
+     * @param host O hostname ou endereço IP para o qual o servidor RMI deve se
+     *             vincular.
+     * @param port A porta na qual o RMI Registry deve ser criado.
+     * @return Uma instância de RMIService com o registry criado e pronto para uso.
+     * @throws Exception Erro ao iniciar o RMI Registry ou configurar o servidor
+     *                   RMI.
+     */
     public static RMIService initalizeRMIServer(String host, int port) throws Exception {
         try {
             System.setProperty("java.rmi.server.hostname", host);
@@ -30,6 +45,13 @@ public class RMIService {
         }
     }
 
+    /**
+     * Registra um stub de serviço remoto no RMI Registry.
+     * 
+     * @param service     O serviço remoto a ser registrado.
+     * @param serviceName O nome sob o qual o serviço será registrado.
+     * @throws Exception Erro ao registrar o serviço.
+     */
     public void registryStub(Remote service, String serviceName) throws Exception {
         try {
             Remote remoteObject = UnicastRemoteObject.exportObject(service, 0);

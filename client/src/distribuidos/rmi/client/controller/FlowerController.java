@@ -10,6 +10,10 @@ import distribuidos.rmi.client.model.DistanceMethod;
 import distribuidos.rmi.client.model.Pair;
 import distribuidos.rmi.client.view.TerminalView;
 
+/**
+ * Controlador para gerenciar as operações relacionadas às flores no cliente
+ * RMI.
+ */
 public class FlowerController {
 
     private final TerminalView view;
@@ -21,24 +25,37 @@ public class FlowerController {
         this.calculatorService = fetchRemoteService(registry);
     }
 
+    /**
+     * Executa o fluxo principal de interação com o usuário, solicitando as
+     * características das flores, o método de cálculo de distância e exibindo a
+     * flor mais próxima.
+     */
     public void run() {
+        // Leitura dos valores das características das flores e do método de cálculo de distância
         FlowerFeature featureA = view.readFlowerFeature("A");
         FlowerFeature featureB = view.readFlowerFeature("B");
         FlowerFeature featureC = view.readFlowerFeature("C");
 
         DistanceMethod method = view.readDistanceMethod();
 
+        // Cálculo das distâncias entre as flores usando o método selecionado
         Map<Pair<FlowerFeature, FlowerFeature>, Double> featureDistances = Map.of(
                 new Pair<>(featureA, featureB), calculateDistance(featureA, featureB, method),
                 new Pair<>(featureA, featureC), calculateDistance(featureA, featureC, method),
                 new Pair<>(featureB, featureC), calculateDistance(featureB, featureC, method));
 
+        // Identificação do par de flores mais próximas com base nas distâncias calculadas
         Pair<FlowerFeature, FlowerFeature> closestPair = defineClosestPair(featureDistances);
 
         view.displayClosestPair(closestPair, featureDistances.getOrDefault(closestPair, Double.NaN));
 
     }
 
+    /**
+     * Define o par de flores mais próximas com base nas distâncias calculadas.
+     * @param distances Um mapa contendo os pares de flores e suas respectivas distâncias calculadas.
+     * @return O par de flores mais próximas.
+     */
     private Pair<FlowerFeature, FlowerFeature> defineClosestPair(
             Map<Pair<FlowerFeature, FlowerFeature>, Double> distances) {
 
@@ -59,6 +76,11 @@ public class FlowerController {
         return closestPair;
     }
 
+    /**
+     * Obtém o serviço remoto de cálculo de distância do servidor RMI usando o registry fornecido.
+     * @param registry O registry do servidor RMI.
+     * @return O serviço de cálculo de distância.
+     */
     private DistanceCalculatorService fetchRemoteService(Registry registry) {
         try {
             System.out.println("Obtendo o serviço de cálculo de distância do servidor RMI...");
@@ -68,6 +90,13 @@ public class FlowerController {
         }
     }
 
+    /**
+     * Calcula a distância entre duas flores usando o método de distância especificado.
+     * @param first A primeira flor.
+     * @param second A segunda flor.
+     * @param method O método de distância a ser usado.
+     * @return A distância entre as duas flores.
+     */
     private double calculateDistance(FlowerFeature first, FlowerFeature second, DistanceMethod method) {
         try {
             return switch (method) {

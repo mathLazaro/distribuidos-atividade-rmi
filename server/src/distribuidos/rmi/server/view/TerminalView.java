@@ -2,6 +2,10 @@ package distribuidos.rmi.server.view;
 
 import distribuidos.api.model.FlowerFeature;
 
+/**
+ * Visão do terminal para exibição de informações sobre as operações do servidor
+ * RMI.
+ */
 public class TerminalView {
 
     private static TerminalView instance;

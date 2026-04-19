@@ -8,6 +8,11 @@ import distribuidos.api.model.FlowerFeature;
 import distribuidos.rmi.client.model.DistanceMethod;
 import distribuidos.rmi.client.model.Pair;
 
+/**
+ * Classe para interação com o usuário via terminal, responsável por ler as
+ * entradas do usuário e exibir os resultados relacionados às operações de
+ * cálculo de distância entre flores no cliente RMI.
+ */
 public class TerminalView {
 
     private static TerminalView INSTANCE;

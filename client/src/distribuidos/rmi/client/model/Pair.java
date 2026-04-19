@@ -1,5 +1,8 @@
 package distribuidos.rmi.client.model;
 
+/**
+ * Classe auxiliar para representação de par de objetos
+ */
 public record Pair<T, U>(T first, U second) {
 
     @Override
