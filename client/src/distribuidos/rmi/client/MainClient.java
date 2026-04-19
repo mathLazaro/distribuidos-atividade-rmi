@@ -10,7 +10,7 @@ import distribuidos.util.EnvLoader;
 public class MainClient {
 
     public static void main(String[] args) {
-        EnvLoader.load(".env");
+        EnvLoader.loadRelativeTo(MainClient.class, ".env");
 
         String rmiHost = EnvLoader.get("RMI_HOST").orElse("127.0.0.1");
         int rmiPort = EnvLoader.get("RMI_PORT").map(Integer::parseInt).orElse(1099);

@@ -6,7 +6,18 @@
             "name": "MainServer",
             "request": "launch",
             "mainClass": "distribuidos.rmi.server.MainServer",
-            "projectName": "atividade_rmi_ba211b49"
+            "projectName": "atividade_rmi_ba211b49",
+            "cwd": "${workspaceFolder}/server",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "MainClient",
+            "request": "launch",
+            "mainClass": "distribuidos.rmi.client.MainClient",
+            "projectName": "atividade_rmi_ba211b49",
+            "cwd": "${workspaceFolder}/client",
+            "console": "integratedTerminal"
         },
         {
             "type": "java",

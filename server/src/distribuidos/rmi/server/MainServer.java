@@ -9,7 +9,7 @@ public class MainServer {
 
     public static void main(String[] args) {
 
-        EnvLoader.load(".env");
+        EnvLoader.loadRelativeTo(MainServer.class, ".env");
 
         String host = EnvLoader.get("HOST").orElse("127.0.0.1");
         int port = EnvLoader.get("PORT").map(Integer::parseInt).orElse(1099);
