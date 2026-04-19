@@ -17,7 +17,7 @@ SOURCES := $(shell find $(SRC_DIR) -name "*.java")
 
 all: build
 
-build: jar
+build: clean jar
 
 jar:
 	@mkdir -p $(CLASSES_DIR)

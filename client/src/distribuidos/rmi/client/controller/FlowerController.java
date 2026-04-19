@@ -35,7 +35,7 @@ public class FlowerController {
 
         Pair<FlowerFeature, FlowerFeature> closestPair = defineClosestPair(featureDistances);
 
-        view.displayClosestPair(closestPair);
+        view.displayClosestPair(closestPair, featureDistances.getOrDefault(closestPair, Double.NaN));
 
     }
 

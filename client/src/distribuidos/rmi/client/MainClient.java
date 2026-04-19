@@ -15,7 +15,7 @@ public class MainClient {
         String rmiHost = EnvLoader.get("RMI_HOST").orElse("127.0.0.1");
         int rmiPort = EnvLoader.get("RMI_PORT").map(Integer::parseInt).orElse(1099);
 
-        System.out.println("Client iniciado");
+        System.out.printf("%nClient iniciado%n");
 
         // Conecta ao servidor RMI
         Registry registry = RmiConnectionFactory.connect(rmiHost, rmiPort)

@@ -20,4 +20,10 @@ public record FlowerFeature(String description, Dimension petalDimension, Dimens
             throw new IllegalArgumentException("A dimensão da sépala não pode ser nula.");
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%n . Pétala: %s%n . Sépala: %s%n)", description, petalDimension, sepalDimension);
+    }
+
 }

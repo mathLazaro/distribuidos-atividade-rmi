@@ -21,4 +21,9 @@ public record Dimension(double height, double width) implements Serializable {
         }
     }
 
+    @Override
+    public String toString() {
+        return String.format("Altura: %.2f, Largura: %.2f", height, width);
+    }
+
 }

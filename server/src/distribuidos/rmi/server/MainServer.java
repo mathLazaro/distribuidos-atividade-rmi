@@ -14,6 +14,8 @@ public class MainServer {
         String host = EnvLoader.get("HOST").orElse("127.0.0.1");
         int port = EnvLoader.get("PORT").map(Integer::parseInt).orElse(1099);
 
+        System.out.printf("%nServer iniciado%n");
+
         RMIService rmiService;
         try {
             rmiService = RMIService.initalizeRMIServer(host, port);

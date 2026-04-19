@@ -40,6 +40,8 @@ public class TerminalView {
             int option = in.nextInt();
             in.nextLine();
 
+            System.out.printf("%n");
+
             return switch (option) {
                 case 1 -> DistanceMethod.EUCLIDEAN;
                 case 2 -> DistanceMethod.CITY_BLOCK;
@@ -57,21 +59,41 @@ public class TerminalView {
 
     public FlowerFeature readFlowerFeature(String description) {
         try {
-            System.out.println("Digite as dimensões da flor:");
-            System.out.print("Dimensão da pétala (altura, largura): ");
-            double petalHeight = in.nextDouble();
-            double petalWidth = in.nextDouble();
-            Dimension petalDimension = new Dimension(petalHeight, petalWidth);
+            System.out.printf("%n");
+            System.out.printf("Digite as dimensões da flor '%s':%n", description);
 
-            System.out.print("Dimensão da sépala (altura, largura): ");
-            double sepalHeight = in.nextDouble();
-            double sepalWidth = in.nextDouble();
-            Dimension sepalDimension = new Dimension(sepalHeight, sepalWidth);
+            Dimension petalDimension = readDimension("pétala");
+            Dimension sepalDimension = readDimension("sépala");
 
+            System.out.printf("%n");
             return new FlowerFeature(description, petalDimension, sepalDimension);
         } catch (Exception e) {
             System.err.println("Erro ao ler as dimensões da flor. Tente novamente.");
             return readFlowerFeature(description);
+        }
+    }
+
+    private Dimension readDimension(String name) {
+        System.out.printf("Dimensão da %s:%n", name);
+        double width = readDouble(" . Largura: ");
+        double height = readDouble(" . Altura: ");
+        return new Dimension(height, width);
+    }
+
+    private double readDouble(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String input = in.nextLine().trim();
+
+                if (input.isEmpty()) {
+                    continue;
+                }
+
+                return Double.parseDouble(input.replace(',', '.'));
+            } catch (NumberFormatException e) {
+                System.err.println("Valor inválido. Digite um número.");
+            }
         }
     }
 
@@ -85,9 +107,10 @@ public class TerminalView {
         }
     }
 
-    public void displayClosestPair(Pair<FlowerFeature, FlowerFeature> closestPair) {
-        System.out.printf("O par mais próximo é: %s e %s%n",
-                closestPair.first().description(), closestPair.second().description());
+    public void displayClosestPair(Pair<FlowerFeature, FlowerFeature> closestPair, double distance) {
+        System.out.printf("O par mais próximo é: %s e %s (valor: %.4f)%n",
+                closestPair.first().description(), closestPair.second().description(), distance);
+        System.out.printf(" --- %n%n");
     }
 
 }
